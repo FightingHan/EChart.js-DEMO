@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="showData.css">
+    <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="showData.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+    <script src="http://api.map.baidu.com/api?v=3.0&ak=PlhFWpA02aoURjAOpnWcRGqw7AI8EEyO"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <img class="small-icon" id="showNav" onClick="hiddenNav()" src="images/navigation.png" />
+            <h3 id="black">全国<span id="green">智能交通后台数据监控平台</span></h3>
+            <div id="search">
+                <i class="fa fa-search"></i>
+                <input type="text" placeholder="搜点什么吧"/>
+            </div>  
+            <div id="profile">
+                <img class="small-icon" src="images/group-chat.png" />
+                <img class="small-icon" src="images/profile.png" />
+                <img class="small-icon" src="images/new-message.png" />
+            </div>  
+        </div>
+    </header>
+    <div class="row content">
+        <div class="nav">   
+                <div class="row nav-ul" id="ul-0">
+                    <img src="images/index.png" class="small-icon"/> 
+                    <h2>主页</h2>
+                </div>
+
+                <div class="row nav-ul" id="ul-1">
+                    <img src="images/message.png" class="small-icon"/> 
+                    <h2>各基站管理</h2>
+                    <img src="images/right.png" class="right-icon"/> 
+                </div>
+                <ul>
+                    <li><a href="#">成都</a></li>
+                </ul>
+
+                <div class="row nav-ul" id="ul-2"  onclick="busChart()">
+                    <img src="images/data.png" class="small-icon"/> 
+                    <h2>公交车管理</h2>
+                    <img src="images/right.png" class="right-icon"/> 
+                </div>
+                <ul>
+                    <li><a href="#">重庆</a></li>
+                    <li><a href="#">厦门</a></li>
+                    <li><a href="#">深圳</a></li>
+                    <li><a href="#">东莞</a></li>
+                </ul>
+                <div class="row nav-ul" id="ul-3" onclick="taxiChart()">
+                    <img src="images/data.png" class="small-icon"/> 
+                    <h2>出租车管理</h2>
+                    <img src="images/right.png" class="right-icon"/> 
+                </div>
+                <ul>
+                    <li><a href="#">重庆</a></li>
+                    <li><a href="#">厦门</a></li>
+                    <li><a href="#">深圳</a></li>
+                    <li><a href="#">东莞</a></li>
+                </ul>
+        </div>
+        <div id="allmap" style="width:1000px;height:600px;"></div>
+    </div>
+    <script>
+        $('.nav-ul').on('click', function(){//修改下拉列表的icon
+            $(this).next('ul').toggleClass('active');
+            var children = $(this).children('img');
+            var imgsrc = children[0].src.split(".png")[0];
+            if (imgsrc.indexOf("green") != -1) {
+                children[0].src = imgsrc.split("-")[0] + ".png";
+                children[1].src = 'images/right.png'
+            } else {
+                children[0].src = imgsrc + "-green.png";
+                children[1].src = 'images/down.png'
+            }
+        })
+    </script>
+    <script type="text/javascript" src="busChart.js"></script>
+    <script type="text/javascript" src="taxiChart.js"></script>
+</body>
+</html>
