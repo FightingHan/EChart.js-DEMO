@@ -1,6 +1,6 @@
 
 
-function busChart(){
+function testChart(){
     var dom = document.getElementById("allmap");
     var myChart = echarts.init(dom);
     var app = {};

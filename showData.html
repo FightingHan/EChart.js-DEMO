@@ -38,6 +38,7 @@
                 <div class="row nav-ul" id="ul-0">
                     <img src="images/index.png" class="small-icon"/> 
                     <h2>主页</h2>
+                    <img src="images/right.png" class="right-icon" style="visibility: hidden;"/> 
                 </div>
 
                 <div class="row nav-ul" id="ul-1">
@@ -49,7 +50,7 @@
                     <li><a href="#">成都</a></li>
                 </ul>
 
-                <div class="row nav-ul" id="ul-2"  onclick="busChart()">
+                <div class="row nav-ul" id="ul-2">
                     <img src="images/data.png" class="small-icon"/> 
                     <h2>公交车管理</h2>
                     <img src="images/right.png" class="right-icon"/> 
@@ -60,7 +61,7 @@
                     <li><a href="#">深圳</a></li>
                     <li><a href="#">东莞</a></li>
                 </ul>
-                <div class="row nav-ul" id="ul-3" onclick="taxiChart()">
+                <div class="row nav-ul" id="ul-3">
                     <img src="images/data.png" class="small-icon"/> 
                     <h2>出租车管理</h2>
                     <img src="images/right.png" class="right-icon"/> 
@@ -85,10 +86,27 @@
             } else {
                 children[0].src = imgsrc + "-green.png";
                 children[1].src = 'images/down.png'
+
+                var id = $(this).attr('id'); //处理Echart渲染
+                console.log("id = "+ id);
+                switch(id){
+                    case "ul-0":
+                        break;
+                    case "ul-1":
+                        baseStationChart();
+                        break;
+                    case "ul-2":
+                        busChart();
+                        break;
+                    case "ul-3":
+                        taxiChart();
+                        break;                      
+                }
             }
         })
     </script>
-    <script type="text/javascript" src="busChart.js"></script>
-    <script type="text/javascript" src="taxiChart.js"></script>
+    <script type="text/javascript" src="EChartJS/baseStationChart.js"></script>
+    <script type="text/javascript" src="EChartJS/busChart.js"></script>
+    <script type="text/javascript" src="EChartJS/taxiChart.js"></script>
 </body>
 </html>

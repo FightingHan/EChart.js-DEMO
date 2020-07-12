@@ -1333,13 +1333,7 @@ $(document).ready(function(){
 });
 
 function init() {     //开启鼠标滚轮缩放
-  
-  var map = new BMap.Map("allmap");
-  map.centerAndZoom(new BMap.Point(113.350512, 23.191744),10);
-  map.enableScrollWheelZoom();
-  map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-
-  map.setMapStyleV2({styleJson:styleJson});
+  baseStationChart();//默认显示基站
 
 };
   
